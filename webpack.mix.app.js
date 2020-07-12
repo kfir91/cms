@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-require('laravel-mix-merge-manifest');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -10,7 +10,6 @@ require('laravel-mix-merge-manifest');
  | file for the application as well as bundling up all the JS files.
  |
  */
-if (process.env.section) {
-    require(`${__dirname}/webpack.mix.${process.env.section}.js`);
-}
-mix.mergeManifest();
+
+mix.react('resources/js/app/app.js', 'public/js/app')
+    .sass('resources/sass/app/app.scss', 'public/css/app');

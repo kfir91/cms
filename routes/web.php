@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/********************GLOBAL ROUTES****************/
+#changelang
+View::share('change_lang', function ($locale) {
+    $segments = Request::segments();
+    $segments[0] = $locale;
+
+    return URL::to(implode('/', $segments));
 });
+
+Route::get('/', function () {
+    return view('app.index');
+});
+
+Route::get('admin', function () {
+    return view('admin.index');
+});
+
